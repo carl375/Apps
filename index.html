@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fridge Finder — Investor Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="deck" id="deck" aria-live="polite">
+    <!-- 1. Title -->
+    <section class="slide active" data-slide="0">
+      <div class="slide-bg title-bg"></div>
+      <div class="slide-inner title-inner">
+        <p class="brand">Fridge Finder</p>
+        <h1 class="title-headline">Your fridge,<br />decoded into dinner.</h1>
+        <p class="title-sub">Snap a photo. Get meal ideas and a smarter shopping list — built from what you already have.</p>
+        <p class="title-meta">Investor Pitch · 2026</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="scan-label">Scanning fridge…</div>
+            <div class="scan-grid">
+              <span>Eggs</span><span>Spinach</span><span>Feta</span>
+              <span>Tomatoes</span><span>Chicken</span><span>Rice</span>
+            </div>
+            <div class="meal-chip">Tonight: Spinach &amp; Feta Omelette</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Problem -->
+    <section class="slide" data-slide="1">
+      <div class="slide-bg problem-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">The Problem</p>
+        <h2>We waste food.<br />And still don’t know what to cook.</h2>
+        <p class="lede">Households stare into full fridges every night, then order takeout — while produce spoils and grocery runs stay guesswork.</p>
+        <ul class="stat-list">
+          <li>
+            <span class="stat-num">30–40%</span>
+            <span class="stat-desc">of the US food supply is wasted each year — much of it at home</span>
+          </li>
+          <li>
+            <span class="stat-num">$1,500+</span>
+            <span class="stat-desc">average household loses annually to unused groceries</span>
+          </li>
+          <li>
+            <span class="stat-num">“What’s for dinner?”</span>
+            <span class="stat-desc">the most exhausting daily decision for busy households</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Solution -->
+    <section class="slide" data-slide="2">
+      <div class="slide-bg solution-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">The Solution</p>
+        <h2>Fridge Finder turns one photo into a plan.</h2>
+        <p class="lede">Computer vision reads what’s in your fridge. Generative AI turns it into meals you can cook tonight — and a short list of what to buy next.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <span class="flow-num">01</span>
+            <h3>Snap</h3>
+            <p>Photo your fridge shelves in seconds</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step">
+            <span class="flow-num">02</span>
+            <h3>See</h3>
+            <p>Ingredients detected automatically</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step">
+            <span class="flow-num">03</span>
+            <h3>Cook &amp; Shop</h3>
+            <p>Meal ideas + missing-item list</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Product -->
+    <section class="slide" data-slide="3">
+      <div class="slide-bg product-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Product</p>
+        <h2>Built for the moment you’re already at the fridge.</h2>
+        <div class="feature-grid">
+          <article>
+            <h3>Vision inventory</h3>
+            <p>Detects produce, proteins, dairy, and leftovers from a single photo — no manual logging.</p>
+          </article>
+          <article>
+            <h3>Meal suggestions</h3>
+            <p>Recipes ranked by what you have, time available, and dietary preferences.</p>
+          </article>
+          <article>
+            <h3>Smart shop list</h3>
+            <p>Fills only the gaps — the 2–4 items that unlock multiple meals.</p>
+          </article>
+          <article>
+            <h3>Waste radar</h3>
+            <p>Surfaces “use soon” items so food gets cooked before it hits the bin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Demo narrative -->
+    <section class="slide" data-slide="4">
+      <div class="slide-bg demo-bg"></div>
+      <div class="slide-inner demo-layout">
+        <div class="demo-copy">
+          <p class="eyebrow">In the app</p>
+          <h2>From shelves to supper in under a minute.</h2>
+          <ol class="demo-steps">
+            <li><strong>Open fridge.</strong> Take one clear photo.</li>
+            <li><strong>Confirm items.</strong> Tap to add or remove detections.</li>
+            <li><strong>Pick a meal.</strong> Filter by time, cuisine, or diet.</li>
+            <li><strong>Shop the gaps.</strong> Export a short list to your store or delivery app.</li>
+          </ol>
+        </div>
+        <div class="demo-panel" aria-hidden="true">
+          <div class="panel-block">
+            <span class="panel-label">Detected</span>
+            <div class="tag-row">
+              <span>Chicken thighs</span>
+              <span>Broccoli</span>
+              <span>Garlic</span>
+              <span>Soy sauce</span>
+              <span>Rice</span>
+            </div>
+          </div>
+          <div class="panel-block highlight">
+            <span class="panel-label">Suggested tonight</span>
+            <p class="panel-meal">Garlic soy chicken bowl</p>
+            <p class="panel-meta">22 min · Uses 5 of 5 items</p>
+          </div>
+          <div class="panel-block">
+            <span class="panel-label">Buy to unlock 3 more meals</span>
+            <p class="panel-shop">Ginger · Sesame oil · Scallions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Market -->
+    <section class="slide" data-slide="5">
+      <div class="slide-bg market-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Market</p>
+        <h2>A daily habit in a massive category.</h2>
+        <p class="lede">Food planning sits at the intersection of grocery retail, meal kits, and consumer AI — with a use case that repeats every evening.</p>
+        <div class="market-rows">
+          <div class="market-row">
+            <span class="market-tag">TAM</span>
+            <div>
+              <strong>Global meal planning &amp; grocery tech</strong>
+              <p>Hundreds of billions in consumer grocery spend influenced by digital planning tools</p>
+            </div>
+          </div>
+          <div class="market-row">
+            <span class="market-tag">SAM</span>
+            <div>
+              <strong>US households cooking at home 4+ nights/week</strong>
+              <p>~80M households who plan meals, shop weekly, and hate wasting food</p>
+            </div>
+          </div>
+          <div class="market-row">
+            <span class="market-tag">SOM</span>
+            <div>
+              <strong>Early adopters: busy professionals &amp; young families</strong>
+              <p>Mobile-first users already using recipe apps, Instacart, and ChatGPT for dinner ideas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Business model -->
+    <section class="slide" data-slide="6">
+      <div class="slide-bg biz-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Business Model</p>
+        <h2>Freemium core. Commerce upside.</h2>
+        <div class="biz-grid">
+          <article>
+            <h3>Free</h3>
+            <p>Limited scans per week. Core meal suggestions. Manual list export.</p>
+          </article>
+          <article class="biz-featured">
+            <h3>Fridge Finder Plus</h3>
+            <p>$6.99/mo or $59/yr — unlimited scans, dietary profiles, household sharing, waste insights.</p>
+          </article>
+          <article>
+            <h3>Partner revenue</h3>
+            <p>Affiliate grocery checkout, sponsored “missing item” placements, retailer white-label.</p>
+          </article>
+        </div>
+        <p class="biz-footnote">Unit economics lean subscription-first; commerce is optional and privacy-respecting.</p>
+      </div>
+    </section>
+
+    <!-- 8. Why us / moat -->
+    <section class="slide" data-slide="7">
+      <div class="slide-bg moat-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">Advantage</p>
+        <h2>Not another recipe app. A fridge-native OS.</h2>
+        <ul class="advantage-list">
+          <li>
+            <strong>Photo-first, not form-first</strong>
+            <span>Zero friction at the exact moment of decision</span>
+          </li>
+          <li>
+            <strong>Inventory → meal → shop loop</strong>
+            <span>Closed loop competitors usually split across 2–3 apps</span>
+          </li>
+          <li>
+            <strong>Personal taste model</strong>
+            <span>Learns what you actually cook, not just what you save</span>
+          </li>
+          <li>
+            <strong>Retail partnership surface</strong>
+            <span>High-intent “buy the gap” moments for grocers and brands</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Go to market -->
+    <section class="slide" data-slide="8">
+      <div class="slide-bg gtm-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Go-to-Market</p>
+        <h2>Start where dinner stress is loudest.</h2>
+        <div class="gtm-columns">
+          <div>
+            <h3>Acquire</h3>
+            <p>TikTok / Reels “fridge reveal → dinner” demos. Creator cooks with only what’s detected. App Store feature push around back-to-school and New Year.</p>
+          </div>
+          <div>
+            <h3>Activate</h3>
+            <p>First-session wow: scan → 3 meals in under 60 seconds. Invite household members to share one fridge profile.</p>
+          </div>
+          <div>
+            <h3>Expand</h3>
+            <p>Grocery delivery integrations. Campus and apartment partnerships. B2B2C with retailers who want waste-reduction branding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Traction roadmap -->
+    <section class="slide" data-slide="9">
+      <div class="slide-bg roadmap-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Roadmap</p>
+        <h2>From prototype to habit.</h2>
+        <div class="roadmap">
+          <div class="road-item">
+            <span class="road-phase">Now</span>
+            <h3>MVP</h3>
+            <p>iOS photo scan, meal suggestions, shopping gaps, basic preferences</p>
+          </div>
+          <div class="road-item">
+            <span class="road-phase">Next</span>
+            <h3>Retention</h3>
+            <p>Households, waste radar, Android, weekly meal plans</p>
+          </div>
+          <div class="road-item">
+            <span class="road-phase">Then</span>
+            <h3>Scale</h3>
+            <p>Retailer APIs, Plus launch, creator growth engine</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. The Ask -->
+    <section class="slide" data-slide="10">
+      <div class="slide-bg ask-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">The Ask</p>
+        <h2>Raising $1.5M seed.</h2>
+        <p class="lede">Capital to ship the MVP, prove retention with 10k active households, and lock first retail pilot.</p>
+        <ul class="ask-list">
+          <li><span>45%</span> Product &amp; ML — vision accuracy, meal quality, mobile polish</li>
+          <li><span>25%</span> Growth — creative testing, influencers, App Store</li>
+          <li><span>20%</span> Operations &amp; partnerships — grocery integrations</li>
+          <li><span>10%</span> Runway buffer</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 12. Close -->
+    <section class="slide" data-slide="11">
+      <div class="slide-bg close-bg"></div>
+      <div class="slide-inner title-inner close-inner">
+        <p class="brand">Fridge Finder</p>
+        <h2 class="close-headline">Stop guessing.<br />Start cooking what’s already there.</h2>
+        <p class="title-sub">Let’s build the default dinner OS for every fridge.</p>
+        <p class="close-cta">hello@fridgefinder.app</p>
+      </div>
+    </section>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slideshow controls">
+    <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous slide">←</button>
+    <div class="progress" id="progress" role="tablist" aria-label="Slides"></div>
+    <button type="button" class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+    <span class="slide-count" id="slideCount">1 / 12</span>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
