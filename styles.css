@@ -129,27 +129,33 @@ h2 {
   pointer-events: none;
 }
 
+.slide[data-slide="0"] {
+  justify-content: flex-start;
+  padding-left: clamp(2.5rem, 7vw, 6rem);
+  padding-right: clamp(2rem, 5vw, 4rem);
+}
+
 .title-inner {
-  width: min(560px, 100%);
+  width: min(520px, 52%);
   margin-right: auto;
   animation: rise-in 0.8s var(--ease) both;
 }
 
 .brand {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-size: clamp(3.2rem, 7vw, 5.2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 0.95;
   color: var(--ink);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
 }
 
 .title-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--ink-soft);
   max-width: 14ch;
   margin-bottom: 1.2rem;
@@ -173,10 +179,10 @@ h2 {
 
 .hero-visual {
   position: absolute;
-  right: 6%;
+  right: clamp(4%, 8vw, 10%);
   top: 50%;
   transform: translateY(-50%);
-  animation: float-in 1s 0.2s var(--ease) both;
+  animation: float-in 0.9s 0.05s var(--ease) both;
 }
 
 .phone-frame {
@@ -905,7 +911,13 @@ h2 {
     display: none;
   }
 
+  .slide[data-slide="0"] {
+    justify-content: center;
+    padding-left: 1.5rem;
+  }
+
   .title-inner {
+    width: 100%;
     margin: 2rem 0 0;
   }
 
