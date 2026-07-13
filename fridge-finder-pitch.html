@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fridge Finder — Investor Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --ink: #0c241c;
+  --ink-soft: #1a3d30;
+  --leaf: #1f7a55;
+  --mint: #9fd9b8;
+  --frost: #eef7f2;
+  --cream-ice: #f5fbf8;
+  --citrus: #d4e85c;
+  --coral: #e85d3a;
+  --fog: rgba(12, 36, 28, 0.55);
+  --white: #ffffff;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem 4rem 5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.985);
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease),
+    visibility 0.55s;
+  z-index: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  z-index: 1;
+}
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.slide-inner {
+  position: relative;
+  width: min(920px, 100%);
+  z-index: 1;
+}
+
+.slide-inner.wide {
+  width: min(1080px, 100%);
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.1rem;
+  max-width: 16ch;
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--fog);
+  max-width: 42ch;
+  margin-bottom: 2.5rem;
+}
+
+/* Title slide */
+.title-bg,
+.close-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(159, 217, 184, 0.35), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 15% 80%, rgba(212, 232, 92, 0.22), transparent 50%),
+    linear-gradient(145deg, #f3faf6 0%, #e4f3ea 45%, #d7ebe0 100%);
+}
+
+.title-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 28px,
+      rgba(12, 36, 28, 0.025) 28px,
+      rgba(12, 36, 28, 0.025) 29px
+    );
+  pointer-events: none;
+}
+
+.slide[data-slide="0"] {
+  justify-content: flex-start;
+  padding-left: clamp(2.5rem, 7vw, 6rem);
+  padding-right: clamp(2rem, 5vw, 4rem);
+}
+
+.title-inner {
+  width: min(520px, 52%);
+  margin-right: auto;
+  animation: rise-in 0.8s var(--ease) both;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+}
+
+.title-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  max-width: 14ch;
+  margin-bottom: 1.2rem;
+}
+
+.title-sub {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--fog);
+  max-width: 34ch;
+  margin-bottom: 2rem;
+}
+
+.title-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.hero-visual {
+  position: absolute;
+  right: clamp(4%, 8vw, 10%);
+  top: 50%;
+  transform: translateY(-50%);
+  animation: float-in 0.9s 0.05s var(--ease) both;
+}
+
+.phone-frame {
+  width: 260px;
+  height: 520px;
+  border-radius: 36px;
+  background: var(--ink);
+  padding: 12px;
+  box-shadow:
+    0 40px 80px rgba(12, 36, 28, 0.25),
+    0 0 0 1px rgba(12, 36, 28, 0.15);
+}
+
+.phone-notch {
+  width: 90px;
+  height: 8px;
+  background: #1a3d30;
+  border-radius: 8px;
+  margin: 6px auto 10px;
+}
+
+.phone-screen {
+  height: calc(100% - 24px);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, #1a4d38 0%, #0c241c 100%);
+  padding: 1.4rem 1.1rem;
+  color: var(--frost);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-screen::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(212, 232, 92, 0.15), transparent 60%);
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.scan-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--citrus);
+  position: relative;
+}
+
+.scan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.scan-grid span {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(159, 217, 184, 0.25);
+  border-radius: 10px;
+  padding: 0.65rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  animation: chip-in 0.5s var(--ease) both;
+}
+
+.scan-grid span:nth-child(1) { animation-delay: 0.4s; }
+.scan-grid span:nth-child(2) { animation-delay: 0.5s; }
+.scan-grid span:nth-child(3) { animation-delay: 0.6s; }
+.scan-grid span:nth-child(4) { animation-delay: 0.7s; }
+.scan-grid span:nth-child(5) { animation-delay: 0.8s; }
+.scan-grid span:nth-child(6) { animation-delay: 0.9s; }
+
+.meal-chip {
+  margin-top: auto;
+  background: var(--citrus);
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  position: relative;
+  animation: chip-in 0.6s 1.1s var(--ease) both;
+}
+
+/* Problem */
+.problem-bg {
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(232, 93, 58, 0.12), transparent 50%),
+    linear-gradient(160deg, #f7faf8 0%, #eef5f1 100%);
+}
+
+.stat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 640px;
+}
+
+.stat-list li {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px solid rgba(12, 36, 28, 0.1);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--coral);
+  line-height: 1.15;
+}
+
+.stat-desc {
+  font-size: 1.05rem;
+  color: var(--fog);
+  line-height: 1.45;
+}
+
+/* Solution */
+.solution-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(159, 217, 184, 0.4), transparent 55%),
+    linear-gradient(180deg, #f2f9f5 0%, #e6f2eb 100%);
+}
+
+.flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 160px;
+}
+
+.flow-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--leaf);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.flow-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.flow-step p {
+  font-size: 0.98rem;
+  color: var(--fog);
+  line-height: 1.45;
+  max-width: 18ch;
+}
+
+.flow-arrow {
+  width: 40px;
+  height: 2px;
+  background: var(--mint);
+  margin-top: 1.6rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.flow-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left-color: var(--mint);
+}
+
+/* Product */
+.product-bg {
+  background:
+    linear-gradient(135deg, #0c241c 0%, #163d2e 50%, #1a4a38 100%);
+}
+
+.product-bg ~ .slide-inner,
+.slide[data-slide="3"] .eyebrow,
+.slide[data-slide="3"] h2,
+.slide[data-slide="3"] .feature-grid h3 {
+  color: var(--frost);
+}
+
+.slide[data-slide="3"] .eyebrow {
+  color: var(--citrus);
+}
+
+.slide[data-slide="3"] .feature-grid p {
+  color: rgba(238, 247, 242, 0.7);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 3rem;
+  margin-top: 2rem;
+}
+
+.feature-grid h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature-grid p {
+  font-size: 1.02rem;
+  line-height: 1.5;
+  max-width: 28ch;
+}
+
+/* Demo */
+.demo-bg {
+  background:
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(212, 232, 92, 0.2), transparent 50%),
+    linear-gradient(160deg, #f4faf7 0%, #e8f3ed 100%);
+}
+
+.demo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: min(1080px, 100%);
+}
+
+.demo-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  counter-reset: step;
+}
+
+.demo-steps li {
+  counter-increment: step;
+  padding-left: 2.5rem;
+  position: relative;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--fog);
+}
+
+.demo-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--leaf);
+}
+
+.demo-steps strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.demo-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-block {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(12, 36, 28, 0.08);
+  border-radius: 16px;
+  padding: 1.15rem 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.panel-block.highlight {
+  background: var(--ink);
+  border-color: transparent;
+  color: var(--frost);
+}
+
+.panel-block.highlight .panel-label {
+  color: var(--citrus);
+}
+
+.panel-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 0.6rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag-row span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+  background: var(--frost);
+  border-radius: 8px;
+  color: var(--ink-soft);
+}
+
+.panel-meal {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.panel-meta,
+.panel-shop {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.panel-shop {
+  font-weight: 500;
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+/* Market */
+.market-bg {
+  background: linear-gradient(180deg, #f6fbf8 0%, #eaf4ee 100%);
+}
+
+.market-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.market-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.market-tag {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--leaf);
+  padding-top: 0.15rem;
+}
+
+.market-row strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.market-row p {
+  color: var(--fog);
+  line-height: 1.45;
+  max-width: 48ch;
+}
+
+/* Business */
+.biz-bg {
+  background:
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(159, 217, 184, 0.35), transparent 50%),
+    linear-gradient(145deg, #f3f9f6 0%, #e7f1eb 100%);
+}
+
+.biz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 0.5rem;
+}
+
+.biz-grid article h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.biz-grid article p {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--fog);
+}
+
+.biz-featured h3 {
+  color: var(--leaf);
+}
+
+.biz-featured p {
+  color: var(--ink-soft) !important;
+}
+
+.biz-footnote {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--fog);
+  font-style: italic;
+}
+
+/* Moat */
+.moat-bg {
+  background:
+    linear-gradient(160deg, #0e2a20 0%, #184536 100%);
+}
+
+.slide[data-slide="7"] .eyebrow {
+  color: var(--citrus);
+}
+
+.slide[data-slide="7"] h2 {
+  color: var(--frost);
+  max-width: 18ch;
+}
+
+.advantage-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  max-width: 560px;
+}
+
+.advantage-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--citrus);
+}
+
+.advantage-list strong {
+  font-size: 1.15rem;
+  color: var(--frost);
+  font-weight: 600;
+}
+
+.advantage-list span {
+  font-size: 0.98rem;
+  color: rgba(238, 247, 242, 0.65);
+  line-height: 1.4;
+}
+
+/* GTM */
+.gtm-bg {
+  background: linear-gradient(180deg, #f5faf7 0%, #e9f3ed 100%);
+}
+
+.gtm-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.gtm-columns h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: var(--leaf);
+}
+
+.gtm-columns p {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--fog);
+}
+
+/* Roadmap */
+.roadmap-bg {
+  background:
+    radial-gradient(ellipse 40% 30% at 90% 20%, rgba(212, 232, 92, 0.25), transparent 50%),
+    linear-gradient(145deg, #f2f8f5 0%, #e4efe9 100%);
+}
+
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.road-phase {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 0.75rem;
+}
+
+.road-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.road-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--fog);
+  max-width: 22ch;
+}
+
+/* Ask */
+.ask-bg {
+  background:
+    linear-gradient(135deg, #0c241c 0%, #1a4a38 100%);
+}
+
+.slide[data-slide="10"] .eyebrow {
+  color: var(--citrus);
+}
+
+.slide[data-slide="10"] h2,
+.slide[data-slide="10"] .lede {
+  color: var(--frost);
+}
+
+.slide[data-slide="10"] .lede {
+  opacity: 0.75;
+}
+
+.ask-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 520px;
+}
+
+.ask-list li {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  font-size: 1.05rem;
+  color: rgba(238, 247, 242, 0.8);
+  line-height: 1.4;
+}
+
+.ask-list span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--citrus);
+}
+
+/* Close */
+.close-inner {
+  text-align: left;
+}
+
+.close-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  max-width: 16ch;
+  margin-bottom: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.close-cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--leaf);
+  border-bottom: 2px solid var(--mint);
+  padding-bottom: 0.15rem;
+}
+
+/* Nav */
+.deck-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(12, 36, 28, 0.08);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem 0.45rem 0.55rem;
+  box-shadow: 0 8px 32px rgba(12, 36, 28, 0.12);
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--frost);
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--leaf);
+  transform: scale(1.05);
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(12, 36, 28, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s var(--ease), background 0.3s, border-radius 0.3s;
+}
+
+.dot.active {
+  width: 22px;
+  border-radius: 4px;
+  background: var(--leaf);
+}
+
+.slide-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--fog);
+  min-width: 3.2rem;
+  text-align: right;
+  padding-right: 0.35rem;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(-40%) translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .slide {
+    padding: 4rem 1.5rem 6rem;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .slide[data-slide="0"] {
+    justify-content: center;
+    padding-left: 1.5rem;
+  }
+
+  .title-inner {
+    width: 100%;
+    margin: 2rem 0 0;
+  }
+
+  .stat-list li {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .feature-grid,
+  .biz-grid,
+  .gtm-columns,
+  .roadmap,
+  .demo-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .flow-arrow {
+    display: none;
+  }
+
+  .flow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  h2 {
+    max-width: none;
+  }
+
+  .deck-nav {
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 420px;
+    justify-content: space-between;
+  }
+
+  .progress {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .nav-btn,
+  .dot,
+  .title-inner,
+  .hero-visual,
+  .scan-grid span,
+  .meal-chip {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck" aria-live="polite">
+    <!-- 1. Title -->
+    <section class="slide active" data-slide="0">
+      <div class="slide-bg title-bg"></div>
+      <div class="slide-inner title-inner">
+        <p class="brand">Fridge Finder</p>
+        <h1 class="title-headline">Your fridge,<br />decoded into dinner.</h1>
+        <p class="title-sub">Snap a photo. Get meal ideas and a smarter shopping list — built from what you already have.</p>
+        <p class="title-meta">Investor Pitch · 2026</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="scan-label">Scanning fridge…</div>
+            <div class="scan-grid">
+              <span>Eggs</span><span>Spinach</span><span>Feta</span>
+              <span>Tomatoes</span><span>Chicken</span><span>Rice</span>
+            </div>
+            <div class="meal-chip">Tonight: Spinach &amp; Feta Omelette</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Problem -->
+    <section class="slide" data-slide="1">
+      <div class="slide-bg problem-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">The Problem</p>
+        <h2>We waste food.<br />And still don’t know what to cook.</h2>
+        <p class="lede">Households stare into full fridges every night, then order takeout — while produce spoils and grocery runs stay guesswork.</p>
+        <ul class="stat-list">
+          <li>
+            <span class="stat-num">30–40%</span>
+            <span class="stat-desc">of the US food supply is wasted each year — much of it at home</span>
+          </li>
+          <li>
+            <span class="stat-num">$1,500+</span>
+            <span class="stat-desc">average household loses annually to unused groceries</span>
+          </li>
+          <li>
+            <span class="stat-num">“What’s for dinner?”</span>
+            <span class="stat-desc">the most exhausting daily decision for busy households</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Solution -->
+    <section class="slide" data-slide="2">
+      <div class="slide-bg solution-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">The Solution</p>
+        <h2>Fridge Finder turns one photo into a plan.</h2>
+        <p class="lede">Computer vision reads what’s in your fridge. Generative AI turns it into meals you can cook tonight — and a short list of what to buy next.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <span class="flow-num">01</span>
+            <h3>Snap</h3>
+            <p>Photo your fridge shelves in seconds</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step">
+            <span class="flow-num">02</span>
+            <h3>See</h3>
+            <p>Ingredients detected automatically</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step">
+            <span class="flow-num">03</span>
+            <h3>Cook &amp; Shop</h3>
+            <p>Meal ideas + missing-item list</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Product -->
+    <section class="slide" data-slide="3">
+      <div class="slide-bg product-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Product</p>
+        <h2>Built for the moment you’re already at the fridge.</h2>
+        <div class="feature-grid">
+          <article>
+            <h3>Vision inventory</h3>
+            <p>Detects produce, proteins, dairy, and leftovers from a single photo — no manual logging.</p>
+          </article>
+          <article>
+            <h3>Meal suggestions</h3>
+            <p>Recipes ranked by what you have, time available, and dietary preferences.</p>
+          </article>
+          <article>
+            <h3>Smart shop list</h3>
+            <p>Fills only the gaps — the 2–4 items that unlock multiple meals.</p>
+          </article>
+          <article>
+            <h3>Waste radar</h3>
+            <p>Surfaces “use soon” items so food gets cooked before it hits the bin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Demo narrative -->
+    <section class="slide" data-slide="4">
+      <div class="slide-bg demo-bg"></div>
+      <div class="slide-inner demo-layout">
+        <div class="demo-copy">
+          <p class="eyebrow">In the app</p>
+          <h2>From shelves to supper in under a minute.</h2>
+          <ol class="demo-steps">
+            <li><strong>Open fridge.</strong> Take one clear photo.</li>
+            <li><strong>Confirm items.</strong> Tap to add or remove detections.</li>
+            <li><strong>Pick a meal.</strong> Filter by time, cuisine, or diet.</li>
+            <li><strong>Shop the gaps.</strong> Export a short list to your store or delivery app.</li>
+          </ol>
+        </div>
+        <div class="demo-panel" aria-hidden="true">
+          <div class="panel-block">
+            <span class="panel-label">Detected</span>
+            <div class="tag-row">
+              <span>Chicken thighs</span>
+              <span>Broccoli</span>
+              <span>Garlic</span>
+              <span>Soy sauce</span>
+              <span>Rice</span>
+            </div>
+          </div>
+          <div class="panel-block highlight">
+            <span class="panel-label">Suggested tonight</span>
+            <p class="panel-meal">Garlic soy chicken bowl</p>
+            <p class="panel-meta">22 min · Uses 5 of 5 items</p>
+          </div>
+          <div class="panel-block">
+            <span class="panel-label">Buy to unlock 3 more meals</span>
+            <p class="panel-shop">Ginger · Sesame oil · Scallions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Market -->
+    <section class="slide" data-slide="5">
+      <div class="slide-bg market-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Market</p>
+        <h2>A daily habit in a massive category.</h2>
+        <p class="lede">Food planning sits at the intersection of grocery retail, meal kits, and consumer AI — with a use case that repeats every evening.</p>
+        <div class="market-rows">
+          <div class="market-row">
+            <span class="market-tag">TAM</span>
+            <div>
+              <strong>Global meal planning &amp; grocery tech</strong>
+              <p>Hundreds of billions in consumer grocery spend influenced by digital planning tools</p>
+            </div>
+          </div>
+          <div class="market-row">
+            <span class="market-tag">SAM</span>
+            <div>
+              <strong>US households cooking at home 4+ nights/week</strong>
+              <p>~80M households who plan meals, shop weekly, and hate wasting food</p>
+            </div>
+          </div>
+          <div class="market-row">
+            <span class="market-tag">SOM</span>
+            <div>
+              <strong>Early adopters: busy professionals &amp; young families</strong>
+              <p>Mobile-first users already using recipe apps, Instacart, and ChatGPT for dinner ideas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Business model -->
+    <section class="slide" data-slide="6">
+      <div class="slide-bg biz-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Business Model</p>
+        <h2>Freemium core. Commerce upside.</h2>
+        <div class="biz-grid">
+          <article>
+            <h3>Free</h3>
+            <p>Limited scans per week. Core meal suggestions. Manual list export.</p>
+          </article>
+          <article class="biz-featured">
+            <h3>Fridge Finder Plus</h3>
+            <p>$6.99/mo or $59/yr — unlimited scans, dietary profiles, household sharing, waste insights.</p>
+          </article>
+          <article>
+            <h3>Partner revenue</h3>
+            <p>Affiliate grocery checkout, sponsored “missing item” placements, retailer white-label.</p>
+          </article>
+        </div>
+        <p class="biz-footnote">Unit economics lean subscription-first; commerce is optional and privacy-respecting.</p>
+      </div>
+    </section>
+
+    <!-- 8. Why us / moat -->
+    <section class="slide" data-slide="7">
+      <div class="slide-bg moat-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">Advantage</p>
+        <h2>Not another recipe app. A fridge-native OS.</h2>
+        <ul class="advantage-list">
+          <li>
+            <strong>Photo-first, not form-first</strong>
+            <span>Zero friction at the exact moment of decision</span>
+          </li>
+          <li>
+            <strong>Inventory → meal → shop loop</strong>
+            <span>Closed loop competitors usually split across 2–3 apps</span>
+          </li>
+          <li>
+            <strong>Personal taste model</strong>
+            <span>Learns what you actually cook, not just what you save</span>
+          </li>
+          <li>
+            <strong>Retail partnership surface</strong>
+            <span>High-intent “buy the gap” moments for grocers and brands</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Go to market -->
+    <section class="slide" data-slide="8">
+      <div class="slide-bg gtm-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Go-to-Market</p>
+        <h2>Start where dinner stress is loudest.</h2>
+        <div class="gtm-columns">
+          <div>
+            <h3>Acquire</h3>
+            <p>TikTok / Reels “fridge reveal → dinner” demos. Creator cooks with only what’s detected. App Store feature push around back-to-school and New Year.</p>
+          </div>
+          <div>
+            <h3>Activate</h3>
+            <p>First-session wow: scan → 3 meals in under 60 seconds. Invite household members to share one fridge profile.</p>
+          </div>
+          <div>
+            <h3>Expand</h3>
+            <p>Grocery delivery integrations. Campus and apartment partnerships. B2B2C with retailers who want waste-reduction branding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Traction roadmap -->
+    <section class="slide" data-slide="9">
+      <div class="slide-bg roadmap-bg"></div>
+      <div class="slide-inner wide">
+        <p class="eyebrow">Roadmap</p>
+        <h2>From prototype to habit.</h2>
+        <div class="roadmap">
+          <div class="road-item">
+            <span class="road-phase">Now</span>
+            <h3>MVP</h3>
+            <p>iOS photo scan, meal suggestions, shopping gaps, basic preferences</p>
+          </div>
+          <div class="road-item">
+            <span class="road-phase">Next</span>
+            <h3>Retention</h3>
+            <p>Households, waste radar, Android, weekly meal plans</p>
+          </div>
+          <div class="road-item">
+            <span class="road-phase">Then</span>
+            <h3>Scale</h3>
+            <p>Retailer APIs, Plus launch, creator growth engine</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. The Ask -->
+    <section class="slide" data-slide="10">
+      <div class="slide-bg ask-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow">The Ask</p>
+        <h2>Raising $1.5M seed.</h2>
+        <p class="lede">Capital to ship the MVP, prove retention with 10k active households, and lock first retail pilot.</p>
+        <ul class="ask-list">
+          <li><span>45%</span> Product &amp; ML — vision accuracy, meal quality, mobile polish</li>
+          <li><span>25%</span> Growth — creative testing, influencers, App Store</li>
+          <li><span>20%</span> Operations &amp; partnerships — grocery integrations</li>
+          <li><span>10%</span> Runway buffer</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 12. Close -->
+    <section class="slide" data-slide="11">
+      <div class="slide-bg close-bg"></div>
+      <div class="slide-inner title-inner close-inner">
+        <p class="brand">Fridge Finder</p>
+        <h2 class="close-headline">Stop guessing.<br />Start cooking what’s already there.</h2>
+        <p class="title-sub">Let’s build the default dinner OS for every fridge.</p>
+        <p class="close-cta">hello@fridgefinder.app</p>
+      </div>
+    </section>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slideshow controls">
+    <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous slide">←</button>
+    <div class="progress" id="progress" role="tablist" aria-label="Slides"></div>
+    <button type="button" class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+    <span class="slide-count" id="slideCount">1 / 12</span>
+  </nav>
+
+  <script>
+(() => {
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const progress = document.getElementById("progress");
+  const slideCount = document.getElementById("slideCount");
+  let index = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    progress.appendChild(dot);
+  });
+
+  const dots = Array.from(progress.querySelectorAll(".dot"));
+
+  function goTo(next) {
+    if (next < 0 || next >= slides.length || next === index) {
+      updateChrome();
+      return;
+    }
+    slides[index].classList.remove("active");
+    index = next;
+    slides[index].classList.add("active");
+    updateChrome();
+  }
+
+  function updateChrome() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+      dot.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slides.length - 1;
+    slideCount.textContent = `${index + 1} / ${slides.length}`;
+  }
+
+  prevBtn.addEventListener("click", () => goTo(index - 1));
+  nextBtn.addEventListener("click", () => goTo(index + 1));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+      e.preventDefault();
+      goTo(index + 1);
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      goTo(index - 1);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      goTo(slides.length - 1);
+    }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+  document.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) < 50) return;
+      if (dx < 0) goTo(index + 1);
+      else goTo(index - 1);
+    },
+    { passive: true }
+  );
+
+  updateChrome();
+})();
+
+  </script>
+</body>
+</html>
